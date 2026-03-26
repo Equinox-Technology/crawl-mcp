@@ -91,5 +91,5 @@ ENV CRAWL4AI_HEADLESS=true
 # Expose port for HTTP mode (optional)
 EXPOSE 8000
 
-# Default command runs the MCP server in HTTP mode
-CMD ["python", "-m", "crawl4ai_mcp.server", "--transport", "streamable-http"]
+# Default command runs the MCP server in HTTP mode, binding to 0.0.0.0 for Railway
+CMD ["python", "-m", "crawl4ai_mcp.server", "--transport", "streamable-http", "--host", "0.0.0.0", "--port", "8000"]

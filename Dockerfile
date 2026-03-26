@@ -52,8 +52,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Google Chrome for additional headless browser option
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
+RUN wget -q -O /usr/share/keyrings/google-chrome.asc https://dl.google.com/linux/linux_signing_key.pub \
+    && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.asc] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
     && apt-get update \
     && apt-get install -y google-chrome-stable \
     && rm -rf /var/lib/apt/lists/*
@@ -91,5 +91,5 @@ ENV CRAWL4AI_HEADLESS=true
 # Expose port for HTTP mode (optional)
 EXPOSE 8000
 
-# Default command runs the MCP server
-CMD ["python", "-m", "crawl4ai_mcp.server"]
+# Default command runs the MCP server in HTTP mode
+CMD ["python", "-m", "crawl4ai_mcp.server", "--transport", "streamable-http"]

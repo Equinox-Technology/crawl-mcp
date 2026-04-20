@@ -170,7 +170,7 @@ def validate_summary_length(summary_length: str) -> Optional[Dict[str, Any]]:
 
 def validate_crawl_depth(
     max_depth: int,
-    max_allowed: int = 5
+    max_allowed: int = 10
 ) -> Optional[Dict[str, Any]]:
     """
     Validate crawl depth parameter.
@@ -201,7 +201,7 @@ def validate_crawl_depth(
 
 def validate_max_pages(
     max_pages: int,
-    max_allowed: int = 100
+    max_allowed: int = 1000
 ) -> Optional[Dict[str, Any]]:
     """
     Validate max pages parameter.

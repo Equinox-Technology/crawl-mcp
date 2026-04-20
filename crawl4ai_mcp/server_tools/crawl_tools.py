@@ -161,8 +161,8 @@ def register_crawl_tools(mcp, get_modules):
     @mcp.tool(annotations=READONLY_ANNOTATIONS)
     async def deep_crawl_site(
         url: Annotated[str, Field(description="Starting URL")],
-        max_depth: Annotated[int, Field(description="Link depth (1-2)")] = 2,
-        max_pages: Annotated[int, Field(description="Max pages (max: 10)")] = 5,
+        max_depth: Annotated[int, Field(description="Link depth (1-10)")] = 2,
+        max_pages: Annotated[int, Field(description="Max pages (max: 1000)")] = 5,
         crawl_strategy: Annotated[str, Field(description="'bfs'|'dfs'|'best_first'")] = "bfs",
         include_external: Annotated[bool, Field(description="Follow external links")] = False,
         url_pattern: Annotated[Optional[str], Field(description="URL filter pattern")] = None,
